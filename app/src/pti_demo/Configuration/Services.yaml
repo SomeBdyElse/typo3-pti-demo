@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  PrototypeIntegration\Demo\:
+    resource: '../Classes/*'
+
+  TYPO3\CMS\Extbase\Mvc\View\GenericViewResolver: '@PrototypeIntegration\Demo\ExtbaseViewResolver'
+  TYPO3\CMS\Extbase\Mvc\View\ViewResolverInterface: '@PrototypeIntegration\Demo\ExtbaseViewResolver'

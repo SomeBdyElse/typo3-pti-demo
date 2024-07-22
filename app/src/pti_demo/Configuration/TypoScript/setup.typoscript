@@ -1,0 +1,78 @@
+@import 'lib/parseFunc.typoscript'
+@import 'tt_content'
+
+lib.contentElement = COA
+lib.contentElement.10 = TEXT
+
+page = PAGE
+page.10 = PTI
+page.10 {
+    templateName = @pages/default/default.twig
+    dataProcessors {
+        10 = PrototypeIntegration\PrototypeIntegration\Processor\CompoundProcessor
+        10 {
+            title = TEXT
+            title.field = title
+
+            content {
+                main = PTI_CONTENT
+                main {
+                    table = tt_content
+                    select {
+                        orderBy = sorting
+                        where = colPos = 0
+                    }
+                }
+            }
+
+            navigation {
+                main = PTI
+                main {
+                    dataProcessors {
+                        10 = PrototypeIntegration\PrototypeIntegration\Processor\PageElement\MenuProcessor
+                        10 {
+                            includePageData = 0
+                            menuConfiguration {
+                                entryLevel = 0
+                                levels = 5
+                                expandAll = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+test = PAGE
+test {
+    typeNum = 100
+    10 = CONTENT
+    10 {
+        table = tt_content
+    }
+}
+
+data = PAGE
+data {
+    typeNum = 200
+    config {
+        debug = 0
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+        disablePrefixComment = 1
+        additionalHeaders {
+            20.header = content-type: application/json; charset=UTF-8
+        }
+    }
+
+    10 = PTI
+    10 {
+        templateName = json
+        dataProcessors < page.10.dataProcessors
+    }
+}
+
+# Allow to override news extension views for json view
+plugin.tx_news.settings.format >

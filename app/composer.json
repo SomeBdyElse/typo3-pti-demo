@@ -1,0 +1,48 @@
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "src/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "require": {
+        "georgringer/news": "^11.1.2",
+        "helhum/typo3-console": "^8.0.3",
+        "pti/pti-demo": "dev-main",
+        "typo3/cms-backend": "^12.4",
+        "typo3/cms-core": "^12.4",
+        "typo3/cms-extbase": "^12.4",
+        "typo3/cms-extensionmanager": "^12.4",
+        "typo3/cms-filelist": "^12.4",
+        "typo3/cms-filemetadata": "^12.4",
+        "typo3/cms-fluid": "^12.4",
+        "typo3/cms-frontend": "^12.4",
+        "typo3/cms-info": "^12.4",
+        "typo3/cms-install": "^12.4",
+        "typo3/cms-recordlist": "^12.4",
+        "typo3/cms-rte-ckeditor": "^12.4",
+        "typo3/cms-scheduler": "^12.4",
+        "typo3/cms-seo": "^12.4",
+        "typo3/cms-tstemplate": "^12.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "platform": {
+            "ext-dom": "1",
+            "ext-intl": "1",
+            "ext-json": "1",
+            "ext-pdo": "1",
+            "ext-session": "1",
+            "ext-tokenizer": "1",
+            "ext-xml": "1",
+            "php": "8.2.8"
+        },
+        "sort-packages": true
+    }
+}

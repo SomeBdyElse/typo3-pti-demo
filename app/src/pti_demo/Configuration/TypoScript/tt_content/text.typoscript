@@ -1,0 +1,7 @@
+tt_content.text = PTI
+tt_content.text {
+    templateName = @content-elements/ce01-text/ce01-text.twig
+    dataProcessors {
+        10 = PrototypeIntegration\Demo\Processors\ContentElements\Ce01Text
+    }
+}

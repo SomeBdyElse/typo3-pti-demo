@@ -1,0 +1,19 @@
+<picture>
+    {% for variant in variants %}
+        <source media="{{ variant.mq }}"
+            srcset="
+                {{ variant.uri.default }}{% if variant.uri.retina2x %},
+                {{ variant.uri.retina2x }} 2x{% endif %}
+            "
+        >
+    {% endfor %}
+
+    <img
+        src="{{ default.uri.default }}"
+        srcset="
+            {{ default.uri.default }}{% if default.uri.retina2x %},
+            {{ default.uri.retina2x }} 2x{% endif %}
+        "
+        alt="{{ metaData.alternative }}"
+    >
+</picture>

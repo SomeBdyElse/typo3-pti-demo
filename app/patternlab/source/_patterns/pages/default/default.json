@@ -1,0 +1,21 @@
+{
+  "title": "Page title from patternlab",
+  "navigation": {
+    "main": [
+      {
+        "link": "#",
+        "title": "Menu item 1"
+      },
+      {
+        "link": "#",
+        "title": "Menu item 2"
+      }
+    ]
+  },
+  "content": {
+    "main": [
+      { "_include": "../../content-elements/ce01-text/ce01-text" },
+      { "_include": "../../content-elements/ce02-news-list/ce02-news-list" }
+    ]
+  }
+}

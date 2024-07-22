@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  build:
+    build:
+      context: .
+      target: cms-builder
+    volumes:
+      - ./app:/app

@@ -1,0 +1,40 @@
+diff --git a/node_modules/@pattern-lab/core/src/lib/data_loader.js b/node_modules/@pattern-lab/core/src/lib/data_loader.js
+index 573edd0..beb82ed 100644
+--- a/node_modules/@pattern-lab/core/src/lib/data_loader.js
++++ b/node_modules/@pattern-lab/core/src/lib/data_loader.js
+@@ -5,6 +5,23 @@ const glob = require('glob'),
+   path = require('path'),
+   yaml = require('js-yaml');
+
++function processIncludes(object, fsDep, contextDirectory) {
++  for (var i in object) {
++    let value = object[i];
++    if (typeof(value) === 'object') {
++      if (typeof(value['_include']) === 'string') {
++        let includeRelative = value['_include'];
++        let includePath = path.resolve(contextDirectory, includeRelative);
++        let includedData = loadFile(includePath, fsDep)
++        object[i] = includedData;
++      } else {
++        processIncludes(object[i], fsDep, contextDirectory);
++      }
++    }
++  }
++
++  return object;
++}
+ /**
+  * Loads a single config file, in yaml/json format.
+  *
+@@ -21,7 +38,10 @@ function loadFile(dataFilePath, fsDep) {
+
+     if (dataFile && fsDep.existsSync(path.resolve(dataFile))) {
+       try {
+-        return yaml.load(fsDep.readFileSync(path.resolve(dataFile), 'utf8'));
++        let data = yaml.load(fsDep.readFileSync(path.resolve(dataFile), 'utf8'));
++        let contextDirectory = path.dirname(dataFile);
++        data = processIncludes(data, fsDep, contextDirectory);
++        return data;
+       } catch (err) {
+         throw new Error(`Error loading file: ${dataFile} - ${err.message}`);
+       }

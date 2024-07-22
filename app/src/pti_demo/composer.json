@@ -1,0 +1,32 @@
+{
+  "name": "pti/pti-demo",
+  "description": "Prototype Integration Twig integration",
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "pti_demo"
+    }
+  },
+  "keywords": ["typo3", "extension", "composer.json"],
+  "authors": [
+    {
+      "name": "Hannes Lau",
+      "email": "office@hanneslau.de"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "type": "typo3-cms-extension",
+  "require": {
+    "pti/pti": "^4.0.0",
+    "pti/pti-twig": "^4.0.0",
+    "typo3/cms-core": "^v12.4.4"
+  },
+  "replace": {
+    "pti/pti-demo": "self.version",
+    "typo3-ter/pti-demo": "self.version"
+  },
+  "autoload": {
+    "psr-4": {
+      "PrototypeIntegration\\Demo\\": "Classes/"
+    }
+  }
+}

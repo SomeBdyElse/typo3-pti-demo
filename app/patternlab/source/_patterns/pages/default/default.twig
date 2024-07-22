@@ -1,0 +1,21 @@
+<div class="page">
+    <h1>{{ title }}</h1>
+    <hr />
+    Main menu:
+    <ul>
+        {% for navItem in navigation.main %}
+            <li><a href="{{ navItem.link }}">{{ navItem.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <hr />
+    <div>
+        {% for contentElement in content.main %}
+            {% set template = {
+                'ce01-text': '@content-elements/ce01-text/ce01-text.twig',
+                'ce02-news-list': '@content-elements/ce02-news-list/ce02-news-list.twig',
+                'ce03-textpic': '@content-elements/ce03-textpic/ce03-textpic.twig',
+            }[contentElement.type] ?? '@content-elements/default/default.twig' %}
+            {% include template with contentElement only %}
+        {% endfor %}
+    </div>
+</div>
