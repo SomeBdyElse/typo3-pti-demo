@@ -71,6 +71,15 @@ data {
     10 {
         templateName = json
         dataProcessors < page.10.dataProcessors
+        dataProcessors.10._overrideUncachedFormat = json
+    }
+
+    stdWrap.replacement {
+        10 {
+            useRegExp = 1
+            search = #"(<!--INT_SCRIPT\.[0-9a-f]{32}-->)"#
+            replace = $1
+        }
     }
 }
 
