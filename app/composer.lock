@@ -2492,16 +2492,16 @@
         },
         {
             "name": "pti/pti",
-            "version": "v4.0.2",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SomeBdyElse/typo3-pti.git",
-                "reference": "01a73aa78e0d8d666f48edfbc2c760eca12f6473"
+                "reference": "d7a6bf370654d3bff735dc6dc687ab32823cd080"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SomeBdyElse/typo3-pti/zipball/01a73aa78e0d8d666f48edfbc2c760eca12f6473",
-                "reference": "01a73aa78e0d8d666f48edfbc2c760eca12f6473",
+                "url": "https://api.github.com/repos/SomeBdyElse/typo3-pti/zipball/d7a6bf370654d3bff735dc6dc687ab32823cd080",
+                "reference": "d7a6bf370654d3bff735dc6dc687ab32823cd080",
                 "shasum": ""
             },
             "require": {
@@ -2541,9 +2541,9 @@
             "description": "Prototype Integration",
             "support": {
                 "issues": "https://github.com/SomeBdyElse/typo3-pti/issues",
-                "source": "https://github.com/SomeBdyElse/typo3-pti/tree/v4.0.2"
+                "source": "https://github.com/SomeBdyElse/typo3-pti/tree/v4.0.4"
             },
-            "time": "2023-09-21T14:46:03+00:00"
+            "time": "2024-09-04T17:15:18+00:00"
         },
         {
             "name": "pti/pti-demo",

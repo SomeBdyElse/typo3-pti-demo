@@ -10,12 +10,16 @@
     <hr />
     <div>
         {% for contentElement in content.main %}
-            {% set template = {
-                'ce01-text': '@content-elements/ce01-text/ce01-text.twig',
-                'ce02-news-list': '@content-elements/ce02-news-list/ce02-news-list.twig',
-                'ce03-textpic': '@content-elements/ce03-textpic/ce03-textpic.twig',
-            }[contentElement.type] ?? '@content-elements/default/default.twig' %}
-            {% include template with contentElement only %}
+            {% if contentElement is iterable %}
+                {% set template = {
+                    'ce01-text': '@content-elements/ce01-text/ce01-text.twig',
+                    'ce02-news-list': '@content-elements/ce02-news-list/ce02-news-list.twig',
+                    'ce03-textpic': '@content-elements/ce03-textpic/ce03-textpic.twig',
+                }[contentElement.type] ?? '@content-elements/default/default.twig' %}
+                {% include template with contentElement only %}
+            {% else %}
+                {{ contentElement |raw }}
+            {% endif %}
         {% endfor %}
     </div>
 </div>
