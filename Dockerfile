@@ -1,4 +1,4 @@
-FROM alpine:3.18.2 as cms-builder
+FROM alpine:3.29 as cms-builder
 
 RUN \
     apk add --update --no-cache \
@@ -9,14 +9,13 @@ RUN \
         patch \
         rsync \
         \
-        php82 \
-        php82-json \
-        php82-phar \
-        php82-iconv \
-        php82-curl \
-        php82-openssl \
-        php82-mbstring \
-    && ln -s /usr/bin/php82 /usr/bin/php
+        php83 \
+        php83-json \
+        php83-phar \
+        php83-iconv \
+        php83-curl \
+        php83-openssl \
+        php83-mbstring
 
 # PHP composer libiconv patch https://github.com/docker-library/php/issues/240
 RUN apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
@@ -36,7 +35,7 @@ CMD ["/bin/bash", "-c", "composer install"]
 
 
 
-FROM alpine:3.18.2 AS cms-webserver
+FROM alpine:3.20.3 AS cms-webserver
 
 # Install common tools
 # gettext    provides envsubst, used for fixture import to db
@@ -66,33 +65,33 @@ ENV TYPO3_GFX_PROCESSOR_PATH_LZW=/usr/bin/
 # Install php and modules
 RUN \
     apk add --update --no-cache \
-        php82-cli \
-        php82-fpm \
+        php83-cli \
+        php83-fpm \
         \
-        php82-curl \
-        php82-dom \
-        php82-fileinfo \
-        php82-gd \
-        php82-intl \
-        php82-json \
-        php82-mbstring \
-        php82-mysqli \
-        php82-opcache \
-        php82-pdo \
-        php82-redis \
-        php82-simplexml \
-        php82-soap \
-        php82-tokenizer \
-        php82-xdebug \
-        php82-xml \
-        php82-xmlwriter \
-        php82-zip \
-    && ln -s /usr/bin/php82 /usr/bin/php
+        php83-curl \
+        php83-dom \
+        php83-exif \
+        php83-fileinfo \
+        php83-gd \
+        php83-intl \
+        php83-json \
+        php83-mbstring \
+        php83-mysqli \
+        php83-opcache \
+        php83-pdo \
+        php83-redis \
+        php83-simplexml \
+        php83-soap \
+        php83-tokenizer \
+        php83-xdebug \
+        php83-xml \
+        php83-xmlwriter \
+        php83-zip
 
 
 # Configure PHP
-COPY docker/web/php/xdebug.ini /etc/php82/conf.d/50_xdebug.ini
-COPY docker/web/php/typo3.ini /etc/php82/conf.d/99_typo3.ini
+COPY docker/web/php/xdebug.ini /etc/php83/conf.d/50_xdebug.ini
+COPY docker/web/php/typo3.ini /etc/php83/conf.d/99_typo3.ini
 
 # Install nginx
 RUN apk add --update --no-cache \
@@ -101,7 +100,7 @@ RUN mkdir -p /run/nginx
 
 # Configure nginx
 COPY docker/web/nginx/default.conf.template /etc/nginx/http.d/default.conf.template
-RUN echo "clear_env = no" >> /etc/php82/php-fpm.d/www.conf
+RUN echo "clear_env = no" >> /etc/php83/php-fpm.d/www.conf
 COPY docker/web/certs/nginx.pem /etc/ssl/certs/nginx.pem
 COPY docker/web/certs/nginx.key /etc/ssl/private/nginx.key
 

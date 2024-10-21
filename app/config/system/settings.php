@@ -2,27 +2,25 @@
 return [
     'BE' => [
         'debug' => true,
-        'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$OUFwQlU1T0cyMGVJeDc2Ng$yvN04aswS653+0Yh9pB/ZeQP5/InrI5n0M9XqxLnxeI',
-        'loginSecurityLevel' => 'normal',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'passwordPolicy' => '',
     ],
     'DB' => [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
                 'dbname' => 'app',
+                'defaultTableOptions' => [
+                    'charset' => 'utf8mb4',
+                    'collation' => 'utf8mb4_unicode_ci',
+                ],
                 'driver' => 'mysqli',
                 'host' => 'db',
                 'password' => 'app',
                 'port' => 3306,
-                'tableoptions' => [
-                    'charset' => 'utf8mb4',
-                    'collate' => 'utf8mb4_unicode_ci',
-                ],
                 'user' => 'app',
             ],
         ],
@@ -46,17 +44,14 @@ return [
             'archiveDate' => 'date',
             'categoryBeGroupTceFormsRestriction' => '0',
             'categoryRestriction' => '',
-            'contentElementPreview' => '1',
             'contentElementRelation' => '1',
             'dateTimeNotRequired' => '0',
             'hidePageTreeForAdministrationModule' => '0',
             'manualSorting' => '0',
-            'mediaPreview' => 'false',
             'prependAtCopy' => '1',
             'resourceFolderImporter' => '/news_import',
             'rteForTeaser' => '0',
             'showAdministrationModule' => '1',
-            'showImporter' => '0',
             'slugBehaviour' => 'unique',
             'storageUidImporter' => '1',
             'tagPid' => '1',
@@ -66,7 +61,11 @@ return [
         ],
     ],
     'FE' => [
+        'cacheHash' => [
+            'enforceValidation' => true,
+        ],
         'debug' => true,
+        'disableNoCacheParameter' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -74,12 +73,9 @@ return [
     ],
     'GFX' => [
         'processor' => 'ImageMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'sRGB',
         'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
-        'processor_path_lzw' => '/usr/bin/',
     ],
     'LOG' => [
         'TYPO3' => [
@@ -105,46 +101,32 @@ return [
         'transport_smtp_username' => '',
     ],
     'SYS' => [
+        'UTF8filesystem' => true,
         'caching' => [
             'cacheConfigurations' => [
                 'hash' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                 ],
-                'imagesizes' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
-                    'options' => [
-                        'compression' => 1,
-                    ],
-                ],
                 'pages' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                     'options' => [
-                        'compression' => 1,
-                    ],
-                ],
-                'pagesection' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
-                    'options' => [
-                        'compression' => 1,
+                        'compression' => true,
                     ],
                 ],
                 'rootline' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                     'options' => [
-                        'compression' => 1,
+                        'compression' => true,
                     ],
                 ],
             ],
         ],
         'devIPmask' => '*',
         'displayErrors' => 1,
-        'encryptionKey' => '36e7a11d1d80eb7a4088c5be229a6945589f4d5b2ff1dd37893e6592e807f828156c9f24e67fefbf7ce80aababe35321',
+        'encryptionKey' => '41982ee63efd4427381305517b3e442e1fe8405bdb79bd503898aa607ce52cc41cd6a2c7c1006c61ddcd4e71514512bc',
         'exceptionalErrors' => 12290,
         'features' => [
-            'felogin.extbase' => true,
-            'fluidBasedPageModule' => true,
-            'rearrangedRedirectMiddlewares' => true,
-            'unifiedPageTranslationHandling' => true,
+            'frontend.cache.autoTagging' => true,
         ],
         'sitename' => 'PTI Demo',
         'systemMaintainers' => [

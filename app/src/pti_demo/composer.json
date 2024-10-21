@@ -16,9 +16,8 @@
   "license": "GPL-2.0+",
   "type": "typo3-cms-extension",
   "require": {
-    "pti/pti": "^4.0.0",
-    "pti/pti-twig": "^4.0.0",
-    "typo3/cms-core": "^v12.4.4"
+    "pti/pti-twig": "^v5.0.0",
+    "typo3/cms-core": "^v13.4.0"
   },
   "replace": {
     "pti/pti-demo": "self.version",
