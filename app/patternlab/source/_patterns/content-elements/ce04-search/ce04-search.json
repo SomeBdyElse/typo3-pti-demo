@@ -1,0 +1,15 @@
+{
+  "type": "ce04-search",
+  "hasSearched": 1,
+  "query": "sample query",
+  "results": [
+    {
+      "title": "Item 1",
+      "url": "#1"
+    },
+    {
+      "title": "Item 2",
+      "url": "#2"
+    }
+  ]
+}

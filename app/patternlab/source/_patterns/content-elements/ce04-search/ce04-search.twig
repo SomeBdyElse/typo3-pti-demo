@@ -1,0 +1,14 @@
+
+<h2>{{ headline }}</h2>
+
+<form>
+    <label>
+        Query
+        <input name="tx_solr[q]" value="{{ query }}" />
+    </label>
+    <button type="submit">Submit</button>
+</form>
+
+{% for result in results %}
+    <h3><a href="{{ result.url }}">{{ result.title }}</a></h3>
+{% endfor %}

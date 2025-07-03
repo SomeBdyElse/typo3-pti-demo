@@ -85,3 +85,5 @@ data {
 
 # Allow to override news extension views for json view
 plugin.tx_news.settings.format >
+
+config.index_enable = 1
