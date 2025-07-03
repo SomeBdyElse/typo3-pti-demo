@@ -1,11 +1,9 @@
 base: 'https://pti-demo.test/'
-baseVariants: {  }
-errorHandling: {  }
 languages:
   -
     title: English
     enabled: true
-    languageId: '0'
+    languageId: 0
     base: /en/
     typo3Language: default
     locale: en_US.UTF-8
@@ -15,6 +13,12 @@ languages:
     direction: ltr
     flag: us
     websiteTitle: English
+    solr_core_read: core_en
 rootPageId: 1
-routes: {  }
+solr_enabled_read: true
+solr_host_read: solr
+solr_path_read: /
+solr_port_read: '8983'
+solr_scheme_read: http
+solr_use_write_connection: false
 websiteTitle: 'PTI Demo'

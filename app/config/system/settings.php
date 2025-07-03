@@ -59,6 +59,16 @@ return [
         'scheduler' => [
             'maxLifetime' => '1440',
         ],
+        'solr' => [
+            'allowSelfSignedCertificates' => '1',
+            'enableRouteEnhancer' => '0',
+            'includeGlobalQParameterInCacheHash' => '0',
+            'monitoringType' => '0',
+            'pluginNamespaces' => 'tx_solr',
+            'useConfigurationFromClosestTemplate' => '0',
+            'useConfigurationMonitorTables' => '',
+            'useConfigurationTrackRecordsOutsideSiteroot' => '1',
+        ],
     ],
     'FE' => [
         'cacheHash' => [

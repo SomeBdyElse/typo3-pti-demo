@@ -1,1 +1,2 @@
-EXT:news/Configuration/TypoScript
+EXT:news/Configuration/TypoScript,
+EXT:solr/Configuration/TypoScript/Solr
